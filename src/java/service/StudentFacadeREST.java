@@ -6,9 +6,10 @@
 package service;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import entity.fit5046.FUnitFrequency;
 import entity.fit5046.Student;
-import java.sql.Date;
+import java.util.Date;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -57,7 +58,7 @@ public class StudentFacadeREST extends AbstractFacade<Student> {
     @Path("NEW")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
         public Response New(String in) {   
-  Gson gson = new Gson();
+ Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
    Student student = gson.fromJson(in,Student.class);
 Calendar c = Calendar.getInstance();
 student.setRegdate(new Date(c.get(Calendar.YEAR)-1900,c.get(Calendar.MONTH),c.get(Calendar.DATE)));
@@ -241,9 +242,9 @@ return q.getResultList();
  
  //T3d
   @GET
-@Path("SearchNewFriends9/{id}/{field1:.*}/{field2:.*}/{field3:.*}/{field4:.*}/{field5:.*}/{field6:.*}/{field7:.*}/{field8:.*}/{field9:.*}")
+@Path("SearchNewFriends11/{id}/{field1:.*}/{field2:.*}/{field3:.*}/{field4:.*}/{field5:.*}/{field6:.*}/{field7:.*}/{field8:.*}/{field9:.*}/{field10:.*}/{field11:.*}")
  @Produces({"application/json"})
- public List<Student> SearchNewFriends9(@PathParam("id") Integer id,@PathParam("field1") String f1,@PathParam("field2") String f2,@PathParam("field3") String f3,@PathParam("field4") String f4,@PathParam("field5") String f5,@PathParam("field6") String f6,@PathParam("field7") String f7,@PathParam("field8") String f8,@PathParam("field9") String f9){
+ public List<Student> SearchNewFriends11(@PathParam("id") Integer id,@PathParam("field1") String f1,@PathParam("field2") String f2,@PathParam("field3") String f3,@PathParam("field4") String f4,@PathParam("field5") String f5,@PathParam("field6") String f6,@PathParam("field7") String f7,@PathParam("field8") String f8,@PathParam("field9") String f9,@PathParam("field10") String f10,@PathParam("field11") String f11){
 Query q = em.createQuery("SELECT s FROM Student s WHERE s.id = :id ", Student.class);
 q.setParameter("id", id);
 Student stu =  (Student)q.getResultList().get(0);
@@ -257,6 +258,8 @@ String v6 = this.valuer(f6, stu);
 String v7 = this.valuer(f7, stu);
 String v8 = this.valuer(f8, stu);
 String v9 = this.valuer(f9, stu);
+String v10 = this.valuer(f10, stu);
+String v11 = this.valuer(f11, stu);
 String i1 = (f1!=null&&!f1.equalsIgnoreCase("")?" AND s."+f1+" = ":"");
 String i2 = (f2!=null&&!f2.equalsIgnoreCase("")?" AND s."+f2+" = ":"");
 String i3 = (f3!=null&&!f3.equalsIgnoreCase("")?" AND s."+f3+" = ":"");
@@ -266,18 +269,22 @@ String i6 = (f6!=null&&!f6.equalsIgnoreCase("")?" AND s."+f6+" = ":"");
 String i7 = (f7!=null&&!f7.equalsIgnoreCase("")?" AND s."+f7+" = ":"");
 String i8 = (f8!=null&&!f8.equalsIgnoreCase("")?" AND s."+f8+" = ":"");
 String i9 = (f9!=null&&!f9.equalsIgnoreCase("")?" AND s."+f9+" = ":"");
+String i10 = (f10!=null&&!f10.equalsIgnoreCase("")?" AND s."+f10+" = ":"");
+String i11 = (f11!=null&&!f11.equalsIgnoreCase("")?" AND s."+f11+" = ":"");
 v1 = (i1.equalsIgnoreCase("")?"":v1);
-v2 = (i1.equalsIgnoreCase("")?"":v2);
-v3 = (i1.equalsIgnoreCase("")?"":v3);
-v4 = (i1.equalsIgnoreCase("")?"":v4);
-v5 = (i1.equalsIgnoreCase("")?"":v5);
-v6 = (i1.equalsIgnoreCase("")?"":v6);
-v7 = (i1.equalsIgnoreCase("")?"":v7);
-v8 = (i1.equalsIgnoreCase("")?"":v8);
-v9 = (i1.equalsIgnoreCase("")?"":v9);
+v2 = (i2.equalsIgnoreCase("")?"":v2);
+v3 = (i3.equalsIgnoreCase("")?"":v3);
+v4 = (i4.equalsIgnoreCase("")?"":v4);
+v5 = (i5.equalsIgnoreCase("")?"":v5);
+v6 = (i6.equalsIgnoreCase("")?"":v6);
+v7 = (i7.equalsIgnoreCase("")?"":v7);
+v8 = (i8.equalsIgnoreCase("")?"":v8);
+v9 = (i9.equalsIgnoreCase("")?"":v9);
+v10 = (i10.equalsIgnoreCase("")?"":v10);
+v11 = (i11.equalsIgnoreCase("")?"":v11);
 
 
-q = em.createQuery("SELECT s FROM Student s WHERE s.id != :id "+i1+v1+i2+v2+i3+v3+i4+v4+i5+v5+i6+v6+i7+v7+i8+v8+i9+v9, Student.class);
+q = em.createQuery("SELECT s FROM Student s WHERE s.id != :id "+i1+v1+i2+v2+i3+v3+i4+v4+i5+v5+i6+v6+i7+v7+i8+v8+i9+v9+i10+v10+i11+v11, Student.class);
 q.setParameter("id", id);
 return q.getResultList();
 
