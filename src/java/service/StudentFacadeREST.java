@@ -619,6 +619,7 @@ private List<Student> processor(String f,String v) throws SecurityException
     }
 
     @GET
+      @Path("findAll")
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Student> findAll() {

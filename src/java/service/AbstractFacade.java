@@ -5,6 +5,7 @@
  */
 package service;
 
+import entity.fit5046.Student;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -60,5 +61,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

@@ -33,16 +33,16 @@ import javax.xml.bind.annotation.XmlRootElement;
             , @NamedQuery(name = "Relationship.searchUnisexFriends", query = "SELECT r FROM Relationship r JOIN r.student s1 JOIN r.student1 s2 WHERE s1.gender = s2.gender          ")
   ,      
 @NamedQuery(name = "Relationship.findByID", query = "SELECT r FROM Relationship r  WHERE r.student1.id = :id OR r.student.id = :id")
-    , @NamedQuery(name = "Relationship.findByEnddate", query = "SELECT r FROM Relationship r WHERE r.enddate = :enddate")})
+ 
+})
 
 public class Relationship implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected RelationshipPK relationshipPK;
-    @Column(name = "ENDDATE")
-    @Temporal(TemporalType.DATE)
-    private Date enddate;
+ 
+
     @JoinColumn(name = "TARGETID", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Student student;
@@ -69,13 +69,7 @@ public class Relationship implements Serializable {
         this.relationshipPK = relationshipPK;
     }
 
-    public Date getEnddate() {
-        return enddate;
-    }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
-    }
 
     public Student getStudent() {
         return student;

@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Ranger/Documents/NetBeansProjects/5046Ass/src/java/entity/fit5046/Student.java</file>
+            <file>file:/C:/Users/Ranger/Documents/NetBeansProjects/5046Ass/src/java/entity/fit5046/RelationshipPK.java</file>
+            <file>file:/C:/Users/Ranger/Documents/NetBeansProjects/5046Ass/src/java/service/RelationshipFacadeREST.java</file>
+            <file>file:/C:/Users/Ranger/Documents/NetBeansProjects/5046Ass/src/java/entity/fit5046/Relationship.java</file>
             <file>file:/C:/Users/Ranger/Documents/NetBeansProjects/5046Ass/src/java/service/StudentFacadeREST.java</file>
+            <file>file:/C:/Users/Ranger/Documents/NetBeansProjects/5046Ass/src/java/service/AbstractFacade.java</file>
         </group>
     </open-files>
 </project-private>
